@@ -1,0 +1,23 @@
+.App-Header {
+    background-color: #222;
+    height: 150px;
+    padding: 20px;
+    color: white;
+    text-align: center;
+}
+
+.App-Menu {
+    float: left;
+    width: 25%;
+}
+
+.App-Content {
+    width: 75%;
+    padding-left: 20px;
+    float: left
+}
+
+.App-footer {
+    text-align: center;
+    padding: 10px;
+}
