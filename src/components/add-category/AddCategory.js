@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { categoryAdded } from '../../actions';
+import { addCategory } from '../../actions';
 
-const mapDispatchToProps = { categoryAdded };
+const mapDispatchToProps = { addCategory };
 const mapStateToProps = (state) => {
-    return { }
+    return { isCreating: state.category.isCreating }
 };
 
 class AddCategory extends Component {
@@ -13,6 +13,7 @@ class AddCategory extends Component {
         this.state = {
             newCategory: "",
         };
+
         this.addCategory = this.addCategory.bind(this);
         this.updateCategory = this.updateCategory.bind(this);
     }
@@ -23,14 +24,14 @@ class AddCategory extends Component {
         });
     }
     addCategory() {
-        this.props.categoryAdded(this.state.newCategory);
+        this.props.addCategory(this.state.newCategory);
     }
 
     render() {
         return (
             <div>
-                <input type="text" placeholder="Category name" onChange={this.updateCategory} />
-                <button onClick={this.addCategory}>Add</button>
+                <input type="text" placeholder="Category name" onChange={this.updateCategory} disabled={this.props.isCreating}/>
+                <button onClick={this.addCategory} disabled={this.props.isCreating}>Add</button>
             </div>
         )
     }

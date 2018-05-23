@@ -1,11 +1,11 @@
-export const category = (state = [], action) => {
+export const category = (state = {categories: {}, isCreating: false}, action) => {
     switch (action.type) {
-        case 'CATEGORY_ADDED_SUCESS':
-            return state.concat([action.category]);
         case 'FETCH_CATEGORY_SUCCESS':
-            return [
-                ...action.categories
-            ];
+            return Object.assign({}, state, {categories: action.categories});
+
+        case 'SET_CREATING_STATE':
+            return Object.assign({}, state, {isCreating: action.isCreating});
+
         default:
             return state;
     }

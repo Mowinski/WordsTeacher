@@ -10,17 +10,11 @@ import {
 } from './components';
 
 import './App.css';
-const categoryFixtures = [
-  "IT",
-  "Frazy",
-  "Kolokacje",
-];
 
 
 class App extends Component {
-  constructor(props) {
-    super(props);
-    this.props.categoryFetched(categoryFixtures);
+  componentDidMount() {
+    this.props.fetchCategories();
   }
 
   render() {

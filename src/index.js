@@ -5,7 +5,7 @@ import { Provider, connect } from "react-redux";
 import './index.css';
 import App from './App';
 import registerServiceWorker from './registerServiceWorker';
-import { categoryFetched } from "./actions";
+import { fetchCategories } from "./actions";
 import { store } from "./store";
 
 
@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
     category: state.category
   }
 };
-const mapDispatchToProps = { categoryFetched };
+const mapDispatchToProps = { fetchCategories };
 
 export const AppContainer = connect(mapStateToProps, mapDispatchToProps)(App);
 

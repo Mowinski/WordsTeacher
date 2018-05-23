@@ -3,17 +3,20 @@ import { connect } from "react-redux";
 
 const mapStateToProps = (state) => {
     return {
-        category: state.category
+        categories: state.category.categories
     }
 };
 
 class ListCategory extends Component {
     render() {
+        let categoryList = [];
+        for (const key in this.props.categories) {
+            const category = this.props.categories[key];
+            categoryList.push(<a href={category} key={key}><li>{category}</li></a>);
+        }
         return (
             <ul>
-                {this.props.category.map((category) =>
-                    <a href={category} key={category}><li>{category}</li></a>
-                )}
+                {categoryList}
             </ul>
         )
     }
