@@ -9,10 +9,23 @@ export const categoryAdded = () => ({
     type: 'CATEGORY_ADDED',
 });
 
+export const hideCategoryAdded = () => ({
+    type: 'HIDE_CATEGORY_ADDED',
+});
+
+export const showCategoryAdded = () => ({
+    type: 'SHOW_CATEGORY_ADDED',
+});
+
 export const setCreatingState = (isCreating) => ({
     type: 'SET_CREATING_STATE',
     isCreating
 });
+
+export const setCategoryAdded = () => (dispatch) => {
+    dispatch(showCategoryAdded());
+    setTimeout(() => dispatch(hideCategoryAdded()), 5000);
+};
 
 export const fetchCategories = () => (dispatch) => {
     const categories = firebase.database().ref('/categories');
@@ -28,5 +41,8 @@ export const addCategory = (categoryName) => (dispatch) => {
         .ref('/categories')
         .push()
         .set(categoryName)
-        .then(() => dispatch(setCreatingState(false)));
-}
+        .then(() => {
+            dispatch(setCreatingState(false));
+            dispatch(setCategoryAdded());
+        });
+};

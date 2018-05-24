@@ -2,7 +2,7 @@
   "name": "word-teacher",
   "version": "0.1.0",
   "private": true,
-  "homepage": "http://mowinski.github.io/WordsTeacher/",
+  "homepage": "https://wordteacher-bb32f.firebaseapp.com/",
   "dependencies": {
     "firebase": "^5.0.3",
     "gh-pages": "^1.1.0",

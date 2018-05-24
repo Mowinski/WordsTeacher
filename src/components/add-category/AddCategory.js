@@ -4,7 +4,10 @@ import { addCategory } from '../../actions';
 
 const mapDispatchToProps = { addCategory };
 const mapStateToProps = (state) => {
-    return { isCreating: state.category.isCreating }
+    return {
+        isCreating: state.category.isCreating,
+        isCreatedNewCategory: state.category.isCreatedNewCategory,
+    }
 };
 
 class AddCategory extends Component {
@@ -28,8 +31,13 @@ class AddCategory extends Component {
     }
 
     render() {
+        let confirmMessage = '';
+        if (this.props.isCreatedNewCategory) {
+            confirmMessage = <div>Category added</div>
+        }
         return (
             <div>
+                {confirmMessage}
                 <input type="text" placeholder="Category name" onChange={this.updateCategory} disabled={this.props.isCreating}/>
                 <button onClick={this.addCategory} disabled={this.props.isCreating}>Add</button>
             </div>
