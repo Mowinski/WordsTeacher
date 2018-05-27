@@ -23,10 +23,3 @@ export const addCategory = (categoryName) => async (dispatch) => {
         .push()
         .set(categoryName);
 };
-
-export const deleteCategory = (categoryId) => (dispatch) => {
-    firebase.database()
-        .ref('/categories')
-        .child(categoryId)
-        .remove()
-}

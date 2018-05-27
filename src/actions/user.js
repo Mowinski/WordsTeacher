@@ -1,4 +1,4 @@
-import { auth } from '../firebase';
+import firebase from '../firebase';
 
 
 export const userLogged = (user) => ({
@@ -12,23 +12,19 @@ export const userLogout = () => ({
 
 
 export const logout = () => (dispatch) => {
-    auth.signOut()
+    firebase.auth().signOut()
         .then(() => dispatch(userLogout()));
 };
 
-export const login = (email, password) => (dispatch) => {
-    auth.signInWithEmailAndPassword(email, password)
-        .then(authUser => {
-            dispatch(userLogged(authUser));
-        })
-        .catch(error => {
-            console.log('Error', error)
-        });
+export const login = (email, password, errBack=() => {}) => (dispatch) => {
+    firebase.auth().signInWithEmailAndPassword(email, password)
+        .then(authUser => dispatch(userLogged(authUser)))
+        .catch(errBack);
 };
 
 
 export const checkUserState = () => (dispatch) => {
-    auth.onAuthStateChanged(authUser => {
+    firebase.auth().onAuthStateChanged(authUser => {
         if (authUser) {
             dispatch(userLogged(authUser));
         } else {
