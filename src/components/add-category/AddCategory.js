@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from "react-redux";
-import { addCategory } from '../../actions';
+import { addCategory } from 'actions/category';
 
 const mapDispatchToProps = { addCategory };
 const mapStateToProps = (state) => Object();

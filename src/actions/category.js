@@ -1,4 +1,4 @@
-import firebase from './firebase';
+import firebase from '../firebase';
 
 export const categoryFetched = (categories) => ({
     type: 'FETCH_CATEGORY_SUCCESS',
@@ -23,3 +23,10 @@ export const addCategory = (categoryName) => async (dispatch) => {
         .push()
         .set(categoryName);
 };
+
+export const deleteCategory = (categoryId) => (dispatch) => {
+    firebase.database()
+        .ref('/categories')
+        .child(categoryId)
+        .remove()
+}
