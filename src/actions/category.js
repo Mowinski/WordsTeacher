@@ -1,4 +1,4 @@
-import firebase from './firebase';
+import firebase from '../firebase';
 
 export const categoryFetched = (categories) => ({
     type: 'FETCH_CATEGORY_SUCCESS',

@@ -1,6 +1,7 @@
 // Import the Firebase modules that you need in your app.
 import firebase from 'firebase/app';
 import 'firebase/database';
+import 'firebase/auth';
 
 // Initalize and export Firebase.
 var config = {
@@ -11,4 +12,7 @@ var config = {
     storageBucket: "wordteacher-bb32f.appspot.com",
     messagingSenderId: "787814470191"
   };
-export default firebase.initializeApp(config);
+
+const app = firebase.initializeApp(config);
+
+export default app;
