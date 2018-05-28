@@ -11,11 +11,18 @@ class AddCategory extends Component {
         this.state = {
             newCategory: "",
             isCreating: false,
-            hasCreatedNewCategory: false
+            hasCreatedNewCategory: false,
+            timer: undefined,
         };
 
         this.addCategory = this.addCategory.bind(this);
         this.updateCategory = this.updateCategory.bind(this);
+    }
+
+    componentWillUnmount() {
+        if (this.state.timer) {
+            clearTimeout(this.state.timer);
+        }
     }
 
     updateCategory(e) {
@@ -27,10 +34,9 @@ class AddCategory extends Component {
         this.setState({ isCreating: true });
         await this.props.addCategory(this.state.newCategory);
         this.setState({
-            isCreating: false,
             hasCreatedNewCategory: true,
+            timer: setTimeout(() => this.setState({hasCreatedNewCategory: false, isCreating: false}), 5000),
         });
-        setTimeout(() => this.setState({hasCreatedNewCategory: false}), 5000);
     }
 
     render() {

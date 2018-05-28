@@ -6,3 +6,4 @@ export { default as AddCategory } from './add-category/AddCategory';
 export { default as Login } from './login/Login';
 export { default as UserProfile } from './user-profile/UserProfile';
 export { default as MenuUserBlock } from './menu-user-block/MenuUserBlock';
+export { default as DeleteCategory } from './delete-category/DeleteCategory';
