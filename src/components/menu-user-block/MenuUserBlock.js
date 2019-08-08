@@ -6,7 +6,6 @@ const mapDispatchToProps = { };
 const mapStateToProps = (state) => {
     return {
         isLogged: state.user.isLogged,
-        user: state.user.user,
     }
 };
 
